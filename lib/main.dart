@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'models/cart.dart';
@@ -15,8 +16,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => Cart(),
-      builder: (context, child) => const MaterialApp(
-          debugShowCheckedModeBanner: false, home: IntroPage()),
+      builder: (context, child) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: IntroPage(),
+          theme: lightMode,
+          darkTheme: darkMode),
     );
   }
 }
