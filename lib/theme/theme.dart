@@ -9,5 +9,5 @@ ThemeData lightMode = ThemeData(
 ThemeData darkMode = ThemeData(
   useMaterial3: true,
   brightness: Brightness.dark,
-  colorScheme: ColorScheme.dark(background: Colors.grey[900]),
+  colorScheme: ColorScheme.dark(background: Colors.black),
 );

@@ -1,7 +1,9 @@
 import 'package:e_commerce_app/components/bottom_nav_bar.dart';
 import 'package:e_commerce_app/pages/cart_page.dart';
 import 'package:e_commerce_app/pages/shop_page.dart';
+import 'package:e_commerce_app/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -53,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       drawer: Drawer(
-          backgroundColor: Colors.grey[900],
+          backgroundColor: Theme.of(context).colorScheme.background,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -88,16 +90,28 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(left: 25, bottom: 25),
-                child: ListTile(
-                  leading: Icon(Icons.logout, color: Colors.white),
-                  title: Text(
-                    "Logout",
-                    style: TextStyle(color: Colors.white),
+              Column(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 25, bottom: 25),
+                    child: ListTile(
+                      leading: Icon(Icons.logout, color: Colors.white),
+                      title: Text(
+                        "Logout",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
                   ),
-                ),
-              ),
+                  Padding(
+                    padding: EdgeInsets.only(left: 25, bottom: 25),
+                    child: IconButton(
+                        onPressed: () {
+                          Provider.of<ThemeProvider>(context).toggleTheme();
+                        },
+                        icon: Icon(Icons.dark_mode)),
+                  ),
+                ],
+              )
             ],
           )), // Added const
       body: _pages[_selectedIndex],

@@ -1,11 +1,13 @@
 import 'package:e_commerce_app/theme/theme.dart';
+import 'package:e_commerce_app/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'models/cart.dart';
 import 'pages/intro_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+      create: (context) => ThemeProvider(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -19,8 +21,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
           home: IntroPage(),
-          theme: lightMode,
-          darkTheme: darkMode),
+          theme: Provider.of<ThemeProvider>(context).themeData),
     );
   }
 }
