@@ -6,22 +6,24 @@ import 'models/cart.dart';
 import 'pages/intro_page.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider(
-      create: (context) => ThemeProvider(), child: MyApp()));
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => ThemeProvider()),
+      ChangeNotifierProvider(create: (context) => Cart()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => Cart(),
-      builder: (context, child) => MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: IntroPage(),
-          theme: Provider.of<ThemeProvider>(context).themeData),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: IntroPage(),
+      theme: Provider.of<ThemeProvider>(context).themeData,
     );
   }
 }

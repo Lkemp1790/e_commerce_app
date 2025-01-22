@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       bottomNavigationBar: MyBottomNavBar(
         onTabChange: (index) => navigateBottomBar(index),
       ),
@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       drawer: Drawer(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -71,20 +71,18 @@ class _HomePageState extends State<HomePage> {
                   const Padding(
                     padding: EdgeInsets.only(left: 25),
                     child: ListTile(
-                      leading: Icon(Icons.home, color: Colors.white),
+                      leading: Icon(Icons.home,),
                       title: Text(
                         "Home",
-                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
                   const Padding(
                     padding: EdgeInsets.only(left: 25),
                     child: ListTile(
-                      leading: Icon(Icons.info, color: Colors.white),
+                      leading: Icon(Icons.info,),
                       title: Text(
                         "About",
-                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
@@ -95,10 +93,9 @@ class _HomePageState extends State<HomePage> {
                   const Padding(
                     padding: EdgeInsets.only(left: 25, bottom: 25),
                     child: ListTile(
-                      leading: Icon(Icons.logout, color: Colors.white),
+                      leading: Icon(Icons.logout,),
                       title: Text(
                         "Logout",
-                        style: TextStyle(color: Colors.white),
                       ),
                     ),
                   ),
@@ -106,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                     padding: EdgeInsets.only(left: 25, bottom: 25),
                     child: IconButton(
                         onPressed: () {
-                          Provider.of<ThemeProvider>(context).toggleTheme();
+                          Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
                         },
                         icon: Icon(Icons.dark_mode)),
                   ),

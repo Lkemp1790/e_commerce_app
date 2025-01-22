@@ -17,7 +17,8 @@ class ShoeTile extends StatelessWidget {
       margin: EdgeInsets.only(left: 25),
       width: 280,
       decoration: BoxDecoration(
-          color: Colors.grey[100], borderRadius: BorderRadius.circular(12)),
+          color: Theme.of(context).colorScheme.secondaryContainer,
+          borderRadius: BorderRadius.circular(12)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -26,8 +27,9 @@ class ShoeTile extends StatelessWidget {
               child: Image.asset(shoe.imagePath)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
-            child: Text(shoe.description,
-                style: TextStyle(color: Colors.grey[600])),
+            child: Text(
+              shoe.description,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 25.0),
@@ -42,8 +44,9 @@ class ShoeTile extends StatelessWidget {
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20)),
                     const SizedBox(height: 5),
-                    Text('\£' + shoe.price,
-                        style: const TextStyle(color: Colors.grey))
+                    Text(
+                      '\£' + shoe.price,
+                    )
                   ],
                 ),
                 GestureDetector(
@@ -51,13 +54,11 @@ class ShoeTile extends StatelessWidget {
                   child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: const BoxDecoration(
-                          color: Colors.black,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(12),
                               bottomRight: Radius.circular(12))),
                       child: const Icon(
                         Icons.add,
-                        color: Colors.white,
                       )),
                 ),
               ],
